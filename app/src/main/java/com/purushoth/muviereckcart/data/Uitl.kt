@@ -10,3 +10,7 @@ import com.purushoth.muviereckcart.ui.product.Dimens
 fun Modifier.piShadow(elevation: Dp = Dimens.space): Modifier = composed {
     shadow(elevation = elevation, shape = RoundedCornerShape(elevation), clip = true)
 }
+
+fun Int.toCurrency():String {
+    return "₹ $this"
+}

@@ -50,5 +50,8 @@ data class ProductsItem(
 	val category: String? = null,
 
 	@field:SerializedName("brand")
-	val brand: String? = null
-)
+	val brand: String? = null,
+	val quantity: Int =1
+) {
+
+}

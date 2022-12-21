@@ -17,7 +17,7 @@ fun AppNavGraph(navController: NavHostController) {
     NavHost(navController = navController , startDestination = Route.PRODUCT) {
 
         composable(Route.PRODUCT) {
-            ProductScreen(productViewModel)
+            ProductScreen(navController = navController, productViewModel)
         }
         composable(Route.CART) {
             CartScreen(productViewModel)

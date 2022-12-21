@@ -16,7 +16,7 @@ class ProductPageDataSource @Inject constructor(private val productRepository: P
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ProductsItem> {
         return try {
-            val nextPageNumber = params.key ?: 10
+            val nextPageNumber = params.key ?: 0
             val response = productRepository.fetchProducts(nextPageNumber)
             LoadResult.Page(
                 data = response?.products?: emptyList(),

@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">MuviereckCart</string>
     <string name="title_product">Products</string>
+    <string name="title_cart">Cart</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+    <string name="title_remove_cart_item">Alert</string>
+    <string name="msg_remove_item">Are you sure want to delete cart items?</string>
+    <string name="acc_delerte_item">Delete</string>
+    <string name="amount">Total Amount</string>
 </resources>
