@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020 .All rights are reserved by PriyangaInfotech
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software distributed under
+  ~ the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+  ~ CONDITIONS OF ANY KIND, either express or implied.
+  ~
+  ~ See the License for the specific language governing permissions and limitations
+  ~ under the License.
+  -->
+<paths>
+    <cache-path
+        name="cache_path"
+        path="." />
+    <external-path
+        name="external_files"
+        path="." />
+</paths>

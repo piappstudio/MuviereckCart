@@ -87,11 +87,14 @@ dependencies {
     // For Hilt
     // To use additional extensions of navigation frameworks like hiltViewModel()
     implementation "com.google.dagger:hilt-android:$hilt_version"
+    implementation fileTree(dir: "libs", include: ["*.jar"])
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     implementation "androidx.hilt:hilt-navigation-fragment:$hilt_nav_fragment"
-    api "androidx.hilt:hilt-navigation-compose:$hilt_navigation_compose"
+    implementation "androidx.hilt:hilt-navigation-compose:$hilt_navigation_compose"
 
 
+    // For HTML 2 PDF
+    //implementation "com.github.LucasFsc:Html2Pdf:0.2-beta"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'

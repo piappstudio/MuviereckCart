@@ -9,12 +9,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.purushoth.muviereckcart.R
+import com.purushoth.muviereckcart.data.PiProgressIndicator
+import com.purushoth.muviereckcart.data.Resource
 import com.purushoth.muviereckcart.data.piShadow
 import com.purushoth.muviereckcart.data.toCurrency
 import com.purushoth.muviereckcart.ui.product.common.CartViewItem
@@ -24,17 +27,28 @@ import com.purushoth.muviereckcart.ui.product.common.CartViewItem
 fun CartScreen(productViewModel: ProductViewModel = hiltViewModel()) {
 
     val cartItems by productViewModel.lstCarts.collectAsState()
+
+    val appStatus by productViewModel.appStatus.collectAsState()
+
+    if (appStatus == Resource.Status.LOADING) {
+        PiProgressIndicator()
+    }
+
     Scaffold(topBar = {
         TopAppBar (title = {
             Text(text = stringResource(R.string.title_cart))
         })
     }) {
 
-        ConstraintLayout(modifier = Modifier.fillMaxSize().padding(it)) {
+        ConstraintLayout(modifier = Modifier
+            .fillMaxSize()
+            .padding(it)) {
             val (list, summary) = createRefs()
 
-            LazyColumn(modifier = Modifier.fillMaxWidth()
-                .padding(Dimens.double_space).constrainAs(list) {
+            LazyColumn(modifier = Modifier
+                .fillMaxWidth()
+                .padding(Dimens.double_space)
+                .constrainAs(list) {
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                     top.linkTo(parent.top)
@@ -52,7 +66,8 @@ fun CartScreen(productViewModel: ProductViewModel = hiltViewModel()) {
             }
 
             Row(modifier = Modifier
-                .fillMaxWidth().padding(Dimens.double_space)
+                .fillMaxWidth()
+                .padding(Dimens.double_space)
                 .constrainAs(summary) {
                     bottom.linkTo(parent.bottom)
                     start.linkTo(parent.start)
@@ -68,8 +83,9 @@ fun CartScreen(productViewModel: ProductViewModel = hiltViewModel()) {
                     Text(text = cartItems.sumOf { prod-> prod.quantity* (prod.price?:0) }.toCurrency(), color = MaterialTheme.colorScheme.outline)
 
                 }
-                
-                Button(onClick = { /*TODO*/ }) {
+
+                val context = LocalContext.current
+                Button(onClick = {productViewModel.generatePdf(context) }) {
                     Text(text = "Invoice")
                 }
             }

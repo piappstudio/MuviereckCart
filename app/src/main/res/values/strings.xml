@@ -8,4 +8,26 @@
     <string name="msg_remove_item">Are you sure want to delete cart items?</string>
     <string name="acc_delerte_item">Delete</string>
     <string name="amount">Total Amount</string>
+    <string name="html_pdf"><![CDATA[<!DOCTYPE html>
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+<h2>Order Details</h2>
+
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Qty</th>
+    <th>Amount</th>
+  </tr>
+  %s
+</table>
+<h3>Total Amount: %d</h3>
+</body>
+</html>]]></string>
 </resources>
